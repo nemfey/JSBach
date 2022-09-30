@@ -1,47 +1,47 @@
-Proyecto de Python y Compiladores
+Python and Compilers Project
 ===
-Autor: [Victor Teixidó Lopez](https://github.com/nemfey)
+Author: [Victor Teixidó Lopez](https://github.com/nemfey)
 
-## Contenido repositorio
-- **TreeVisitor.py**: Contiene el visitador que define la ejecución de toda la gramática
-- **jsbach.g4**: Contiene la gramática del lenguaje JSBach
-- **jsbach.py**: Contiene el programa principal del intérprete. Desde aqui se llama al visitador y se generan los distintos ficheros de salida.
-- **Makefile**: Instala las dependencias requeridas y genera los ficheros necesarios para la grámatica
-- El resto de programas son ejemplos de códigos escritos en **JSBach** y salidas de programas
+## Repository content
+- **TreeVisitor.py**: Contains the visitor which defines the execution of the grammar.
+- **jsbach.g4**: Contains the JSBach programming language grammar.
+- **jsbach.py**: Contains the main interpreter program. From here the visitor is called and the different output files are generated.
+- **Makefile**: Install the required dependencies and generate the necessary files for the grammar.
+- Ohter files are examples of code written in **JSBach** and output files.
 
 # JSBach
-Este proyecto corresponde a la práctica de GEI-LP (2021-22 Q2). Se ha implementado un doble intérprete para un lenguaje de programación musical conocido como JSBach. Este doble intérprete tiene como salida una partitura y ficheros de audio que reproducirán las melodias descritas por el compositor (o programador).
+This project was done as a project during the course GEI-LP (2021-22 Q2). A double interpreter for a music programming language known as JSBach has been implemented. This double interpreter has as output a music sheet and audio files that will reproduce the melodies described by the composer (or programmer).
 
-## Instalación
-Antes de poder trabajar con el harmonioso lenguaje de JSBach será necesario instalar las librerias necesarias a través del ```Makefile```.
+## Setting-up
+Before being able to work with the harmonious language of JSBach it will be necessary to install the necessary libraries through the ```Makefile```.
 ```
 make
 make dependencies
 ```
 
-## Ejecución
-El siguiente comando ejecuta el fichero desde la función **Main**.
+## Execution
+The following command executes the file form the **Main** function.
 ```
 python3 jsbach.py <nombre_fichero>
 ```
 
-Para que la ejecución del programa empiece desde una **función** arbitraria, se puede hacer de la siguiente manera.
+For program execution to start from an arbitrary **function**, it can be done as follows.
 ```
 python3 jsbach.py <nombre_fichero> <nombre_funcion>
 ```
 
-Si además dicha función tiene **parámetros**, se deberá utilizar el siguiente comando.
+Moreover, if such function has **parameters**, the following command should be used.
 ```
 python3 jsbach.py <nombre_fichero> <nombre_funcion> <param1> <param2> ...
 ```
 
-Es muy importante que el fichero a ejecutar tenga la extensión ```.jsb```
+It is very important that the file to be executed has the extension ```.jsb```.
 
-## Intérprete
-**JSBach** es muy similar en cuanto a grámatica a lenguajes de programación como **Python** o **Java** pero con sus propias normas y patrones. El programa ```test-Euclides.jsb``` muestra como calcular el máximo común divisor entre dos números utilizando Euclides y permite entrever las distintas pautas a seguir:
+## Interpreter
+**JSBach** is quite similar in grammar to other programming languages such **Python** or **Java** but with its own rules and patterns. The file ```test-Euclides.jsb``` shows of to calculate the greatest common divisor between two numbers using Euclides and allow us to glimpse the different guidelines to follow:
 ```
 Main |:
-    <!> "Introduce dos numeros"
+    <!> "Introduce two numbers"
     <?> a
     <?> b
     Euclides a b
@@ -55,32 +55,32 @@ Euclides a b |:
             b <- b - a
         :|
     :|
-    <!> "El MCD es" a
+    <!> "The MCD is" a
 :|
 ```
 
-**JSBach** también cuenta con listas y sus respectivas operaciones y funcionalidades. El siguiente ejemplo del programa ```test-Remove.jsb``` hace lo siguiente, dado un número dado por el usuario, se eliminan de una lista arbitraria todos los elementos menores o igual a dicho número.
+**JSBach** also has lists and their respective operations and functionalities. The following example of the ```test-Remove.jsb``` program does the following, given a number given by the user, all elements less than or equal to that number are removed from an arbitrary list.
 
 ```
 Main |:
-    <!> "Introduce un numero"
+    <!> "Introduce a number"
     <?> x
     list <- {1 2 3 4 5}
     i <- 1
     while i <= #list |:
         if list[i] <= x |:
-            ~~~ der Scherenoperator elimina el element i-ésimo de una lista ~~~
+            ~~~ der Scherenoperator deletes the i-th element from a list ~~~
             8< list[i] 
         :|
         else |:
             i <- i+1
         :|
     :|
-    <!> "Lista resultante:" list
+    <!> "Resulting list:" list
 :|
 ```
 
-Como no podía ser de otra manera, el lenguaje de programación **JSBach** cuenta con recursividad. El programa ```test-Hanoi.jsb``` muestra como solucionar el problema de las Torres de Hanoi.
+How could it be otherwise, the **JSBach** programming language has recursion. The ```test-Hanoi.jsb``` program shows how to fix the Tower of Hanoi problem.
 
 ```
 Main |:
@@ -97,7 +97,7 @@ Hanoi n ori dst aux |:
 :|
 ```
 
-Este doble intérprete va más allá de únicamente interpretar código estándard como cualquier otro lenguaje, **JSBach** es capaz de generar una partitura y reproducir música a través de notas dadas por el usuario durante la ejecución del programa. En el programa ```test-Birthday.jsb``` podemos ver como dadas un conjunto de notas en forma de lista podemos reproducir la famosa canción de **Cumpleaños feliz** (o en alemán **Zum Geburtstag viel Glück**).
+This double interpreter goes beyond just interpreting standard code like any other language, **JSBach** is capable of generating a music sheet and playing music through notes given by the user during the execution of the program. In the program ```test-Birthday.jsb``` we can see how, given a set of notes in a list, we can reproduce the famous song **Happy Birthday** (or in German **Zum Geburtstag viel Glück** ).
 
 ```
 Main |:
@@ -105,13 +105,13 @@ Main |:
     <:> song
 :|
 ```
-Además se nos generán los siguientes ficheros:
+In addition, the following files will be generated:
 - [test-Birthday.midi](https://github.com/nemfey/jsbach/blob/main/test-Birthday.midi)
 - [test-Birthday.mp3](https://github.com/nemfey/jsbach/blob/main/test-Birthday.mp3)
 - [test-Birthday.pdf](https://github.com/nemfey/jsbach/blob/main/test-Birthday.pdf)
 - [test-Birthday.wav](https://github.com/nemfey/jsbach/blob/main/test-Birthday.wav)
 
-Como último ejemplo, con el código ```test-HanoiMusic``` podemos escuchar el agradable sonido que producen los discos de las torres de Hanoi al ser ordenados y colocados por el programa. Destacar que en este caso habría que indicar que la función *Hanoi* hace de Main del programa.
+As a last example, with the code ```test-HanoiMusic``` we can listen to the pleasant sound produced by the Tower of Hanoi discs when they are sorted and placed by the program. Note that in this case, it should be indicated that the *Hanoi* function acts as the Main of the program.
 
 ```
 ~~~ Hanoi Music ~~~
@@ -135,14 +135,14 @@ HanoiRec n src dst aux |:
 :|
 ```
 
-## Reproducción musical
-El intérprete de **JSBach**, además de generar los archivos relacionados con la escritura musical, reproducirá automáticamente la melodia generada al acabar la ejecucción del programa cuando se detecte que el compositor (o programador) ha ideado una composición musical.
+## Music playback
+The **JSBach** interpreter, in addition to generating the files related to musical writing, will automatically play the melody generated at the end of the execution of the program when it detects that the composer (or programmer) has devised a musical composition.
 
-## Tratamiento de errores
-Para  el interpréte de **JSBach** se ha implementado el tratamiento de errores tal y como ocurriria en cualquier otro intérprete. Los errores que se tratan y de los cuales se avisa al usuario cuando ocurren son los siguientes:
-- Division entre 0
-- Nota musical no existente
-- Acceso a posición de lista fuera de los límites
-- Sobrescritura de función
-- Acceso a función no existente
-- Número de parámetros de una función incorrectos
+## Error handling
+For the **JSBach** interpreter, error handling has been implemented just as it would be in any other interpreter. The errors that are treated, and of which the user is notified when they occur, are the following:
+- Division by 0
+- Not existing musical note
+- Access to list position out of bounds
+- Function override
+- Access to not existing function
+- Incorrect number of parameters of a function
