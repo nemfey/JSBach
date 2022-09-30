@@ -1,5 +1,5 @@
 Main |:
-    <!> "Introduce dos numeros"
+    <!> "Introduce two numbers"
     <?> a
     <?> b
     Euclides a b
@@ -13,5 +13,5 @@ Euclides a b |:
             b <- b - a
         :|
     :|
-    <!> "El MCD es" a
+    <!> "The MCD is" a
 :|
