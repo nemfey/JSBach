@@ -69,7 +69,7 @@ Main |:
     i <- 1
     while i <= #list |:
         if list[i] <= x |:
-            ~~~ der Scherenoperator deletes the i-th element from a list ~~~
+            ~~~ der Scherenoperator deletes the ith element from a list ~~~
             8< list[i] 
         :|
         else |:
