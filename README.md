@@ -146,3 +146,9 @@ For the **JSBach** interpreter, error handling has been implemented just as it w
 - Function override
 - Access to not existing function
 - Incorrect number of parameters of a function
+
+## Future extensions
+Implementation of:
+- Sharp and flat notes
+- Returning values functions
+- High-order functions
